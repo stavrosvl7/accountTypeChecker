@@ -57,7 +57,20 @@ const accountTypeChecker = (accountBalanceHistory) => {
             }
         }
     
-        return "B";
+	    
+	//there is a missunderstanding in task
+	// 1)Type 🅱 is one where the balance amount changes by the same amount each month.
+	// 2)In other words, write a function that returns B when the balance amount goes down by the same value each month or A when it varies month by month.
+	// 1) and 2) does not agree because 1) says changing in general and 2) says only display B when amount DECREASES by the same value
+	
+	//this if(result<0) is needed only if we want to return B only in DECREASE by the same ammount
+        if(result<0){
+            return "B";
+        }
+	//this return is needed when above if is needed
+        return "amount is increasing by the same amount each month"
+	    
+	//if we want to return B in both INCREASE and DECREASE by the same ammount we have to remove lines 67,68,69,71 and just write return "B";
     }
     return "invalid array";
 };
